@@ -37,10 +37,10 @@ public class NotificationPanel extends Service {
         MediaSessionCompat mediaSession = new MediaSessionCompat(this, MEDIA_SESSION_TAG);
 
 
-        int iconPlayPause = R.drawable.baseline_play_arrow_black_48;
+        int iconPlayPause = R.drawable.play;
         String titlePlayPause = "PAUSE";
         if(isPlaying){
-            iconPlayPause=R.drawable.baseline_pause_black_48;
+            iconPlayPause=R.drawable.pause;
             titlePlayPause="PLAY";
         }
 
@@ -69,14 +69,14 @@ public class NotificationPanel extends Service {
 //        MediaButtonReceiver.handleIntent(mediaSession, selectIntent);
 
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
-                .addAction(R.drawable.baseline_skip_previous_black_48, "PREV", pendingPrevIntent)
+                .addAction(R.drawable.prev, "PREV", pendingPrevIntent)
                 .addAction(iconPlayPause, titlePlayPause, pendingToggleIntent)
-                .addAction(R.drawable.baseline_skip_next_black_48, "NEXT", pendingNextIntent)
+                .addAction(R.drawable.next, "NEXT", pendingNextIntent)
                 .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
                         .setShowActionsInCompactView(0, 1,2)
                         .setShowCancelButton(true)
                         .setMediaSession(mediaSession.getSessionToken()))
-                .setSmallIcon(R.drawable.logo)
+                .setSmallIcon(R.drawable.icon_logo)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setVibrate(new long[]{0L})
                 .setPriority(NotificationCompat.PRIORITY_LOW)
