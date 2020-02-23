@@ -15,6 +15,8 @@ public class NotificationReturnSlot extends BroadcastReceiver {
                 break;
             case "next":
                 FlutterMediaNotificationPlugin.callEvent("next");
+            case "remove":
+                FlutterMediaNotificationPlugin.callEvent("remove");
                 break;
             case "toggle":
                 String title = intent.getStringExtra("title");

@@ -68,10 +68,15 @@ public class NotificationPanel extends Service {
         PendingIntent selectPendingIntent = PendingIntent.getBroadcast(this, 0, selectIntent, PendingIntent.FLAG_CANCEL_CURRENT);
 //        MediaButtonReceiver.handleIntent(mediaSession, selectIntent);
 
+        Intent removeIntent = new Intent(this, NotificationReturnSlot.class)
+                .setAction("remove");
+        PendingIntent pendingRemoveIntent = PendingIntent.getBroadcast(this, 0, removeIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
         Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID)
                 .addAction(R.drawable.prev, "PREV", pendingPrevIntent)
                 .addAction(iconPlayPause, titlePlayPause, pendingToggleIntent)
                 .addAction(R.drawable.next, "NEXT", pendingNextIntent)
+                .addAction(R.drawable.delete, "REMOVE", pendingRemoveIntent)
                 .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
                         .setShowActionsInCompactView(0, 1,2)
                         .setShowCancelButton(true)
